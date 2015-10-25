@@ -1,7 +1,7 @@
 package Act::Handler::Talk::ExportCSV;
 use strict;
 
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use DateTime;
 use DateTime::Format::Pg;
 use Text::xSV;

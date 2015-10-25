@@ -3,7 +3,7 @@ package Act::Handler::Event::Edit;
 use strict;
 use DateTime::TimeZone;
  
-use Apache::Constants qw(NOT_FOUND FORBIDDEN);
+use Apache2::Const qw(NOT_FOUND FORBIDDEN);
 use Act::Config;
 use Act::Form;
 use Act::Template::HTML;

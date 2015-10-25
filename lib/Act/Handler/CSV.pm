@@ -1,6 +1,6 @@
 package Act::Handler::CSV;
 use strict;
-use Apache::Constants qw(NOT_FOUND FORBIDDEN);
+use Apache2::Const qw(NOT_FOUND FORBIDDEN);
 use Act::Config;
 use Text::xSV;
 

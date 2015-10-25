@@ -1,7 +1,7 @@
 package Act::Handler::OpenID;
 
 use strict;
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use Net::OpenID::Server;
 
 use Act::Config;

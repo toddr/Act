@@ -6,7 +6,7 @@ use Test::More;
 use Act::Config;
 use Act::Util;
 
-# Apache::Constants doesn't work offline
+# Apache2::Const doesn't work offline
 BEGIN {
     my %ac = (
         OK        => 0,
@@ -16,13 +16,13 @@ BEGIN {
     {
         require Exporter;
         $INC{'Apache/Constants'} = 1;
-        @Apache::Constants::ISA = 'Exporter';
-        @Apache::Constants::EXPORT = keys %ac;
+        @Apache2::Const::ISA = 'Exporter';
+        @Apache2::Const::EXPORT = keys %ac;
         while (my ($k, $v) = each %ac) {
             no strict 'refs';
-            *{"Apache::Constants::$k"} = sub { $v };
+            *{"Apache2::Const::$k"} = sub { $v };
         }
-        Apache::Constants->import;
+        Apache2::Const->import;
     }
 }
 my %uris = (

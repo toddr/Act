@@ -1,7 +1,7 @@
 package Act::TwoStep;
 use strict;
 
-use Apache::Constants qw(NOT_FOUND FORBIDDEN);
+use Apache2::Const qw(NOT_FOUND FORBIDDEN);
 use Digest::MD5;
 
 use Act::Config;

@@ -1,7 +1,7 @@
 package Act::Handler::Talk::ExportIcal;
 use strict;
 
-use Apache::Constants qw(FORBIDDEN);
+use Apache2::Const qw(FORBIDDEN);
 use DateTime::Format::Pg;
 use Data::ICal;
 use Data::ICal::Entry::Event;

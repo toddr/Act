@@ -1,6 +1,6 @@
 package Act::Handler::Payment::List;
 use strict;
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use DateTime;
 use List::Util qw(first);
 

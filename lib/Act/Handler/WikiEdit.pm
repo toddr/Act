@@ -1,7 +1,7 @@
 package Act::Handler::WikiEdit;
 
 use strict;
-use Apache::Constants qw(NOT_FOUND FORBIDDEN);
+use Apache2::Const qw(NOT_FOUND FORBIDDEN);
 
 use Act::Config;
 use Act::Tag;

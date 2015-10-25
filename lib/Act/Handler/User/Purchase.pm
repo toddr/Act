@@ -1,6 +1,6 @@
 package Act::Handler::User::Purchase;
 use strict;
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use JSON::XS ();
 use List::Util qw(first);
 

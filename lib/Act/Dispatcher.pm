@@ -1,7 +1,7 @@
 use strict;
 package Act::Dispatcher;
 
-use Apache::Constants qw(:common);
+use Apache2::Const qw(:common);
 use Apache::Cookie ();
 use Apache::Request;
 use DBI;

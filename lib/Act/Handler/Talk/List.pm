@@ -1,6 +1,6 @@
 package Act::Handler::Talk::List;
 use strict;
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use Act::Config;
 use Act::Template::HTML;
 use Act::Tag;

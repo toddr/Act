@@ -3,7 +3,7 @@
 package Act::Handler::Static;
 
 use strict;
-use Apache::Constants qw(NOT_FOUND);
+use Apache2::Const qw(NOT_FOUND);
 use File::Spec;
 
 use Act::Config;
