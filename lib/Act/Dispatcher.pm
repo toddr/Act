@@ -2,7 +2,7 @@ use strict;
 package Act::Dispatcher;
 
 use Apache2::Const qw(:common);
-use Apache::Cookie ();
+use Apache2::Cookie ();
 use Apache2::Request;
 use DBI;
 use Encode qw(decode_utf8);
@@ -176,7 +176,7 @@ sub _set_language
 
     # see if we have a cookie
     my $cookie_name = $Config->general_cookie_name;
-    my $cookies = Apache::Cookie->fetch;
+    my $cookies = Apache2::Cookie->fetch;
     if (my $c = $cookies->{$cookie_name}) {
         my %v = $c->value;
         if ($v{language} && $Config->languages->{$v{language}}) {
@@ -219,7 +219,7 @@ sub _set_language
 
     # send the cookie if needed
     if ($sendcookie) {
-        my $cookie = Apache::Cookie->new(
+        my $cookie = Apache2::Cookie->new(
         $Request{r},
             -name    =>  $cookie_name,
             -value   =>  { language => $language },
