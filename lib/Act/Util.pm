@@ -3,7 +3,7 @@ use utf8;
 package Act::Util;
 
 use Apache::Constants qw(M_GET REDIRECT);
-use Apache::AuthCookie;
+use Apache2::AuthCookie;
 use DateTime::Format::Pg;
 use DBI;
 use Digest::MD5 ();
@@ -177,7 +177,7 @@ sub login
 {
     my $user = shift;
     my $sid = create_session($user);
-    Apache::AuthCookie->send_cookie($sid);
+    Apache2::AuthCookie->send_cookie($sid);
 }
 sub get_user_info
 {

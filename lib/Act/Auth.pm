@@ -1,7 +1,7 @@
 package Act::Auth;
 
 use strict;
-use Apache::AuthCookie;
+use Apache2::AuthCookie;
 use Apache::Constants qw(OK);
 use Digest::MD5 ();
 
@@ -9,7 +9,7 @@ use Act::Config;
 use Act::User;
 use Act::Util;
 
-use base qw(Apache::AuthCookie);
+use base qw(Apache2::AuthCookie);
 
 sub access_handler ($$)
 {

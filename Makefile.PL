@@ -2,10 +2,10 @@ use inc::Module::Install;
 all_from 'lib/Act.pm';
 
 requires(
-'Apache::AuthCookie' => 3.05, 
-'Apache::Constants' => 0, 
-'Apache::Cookie' => 0, 
-'Apache::Request' => 0, 
+'Apache2::AuthCookie' => 3.05, 
+#'Apache::Constants' => 0, 
+#'Apache::Cookie' => 0, 
+#'Apache::Request' => 0, 
 'AppConfig' => 0, 
 'Clone' => 0, 
 'DBI' => 0, 
