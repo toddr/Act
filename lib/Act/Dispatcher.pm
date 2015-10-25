@@ -3,7 +3,7 @@ package Act::Dispatcher;
 
 use Apache2::Const qw(:common);
 use Apache::Cookie ();
-use Apache::Request;
+use Apache2::Request;
 use DBI;
 use Encode qw(decode_utf8);
 
@@ -80,7 +80,7 @@ my %dispatch = ( map( { $_ => { handler => $public_handlers{$_} } } keys %public
 sub trans_handler
 {
     # the Apache request object
-    my $r = Apache::Request->instance(shift);
+    my $r = Apache2::Request->instance(shift);
 
     # break it up in components
     my @c = grep $_, split '/', decode_utf8($r->uri);
@@ -152,7 +152,7 @@ sub _dispatch
 sub handler
 {
     # the Apache request object
-    $Request{r} = Apache::Request->instance(shift);
+    $Request{r} = Apache2::Request->instance(shift);
 
     # dispatch
     my $pkg = $dispatch{$Request{action}}{handler};
