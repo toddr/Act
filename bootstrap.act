@@ -1,14 +1,41 @@
 # On Jesse Debian
-apt-get -y install zsh emacs-nox git subversion aptitude libapache2-mod-perl2 apache2 curl make postgresql-plperl-9.4
+
+export ACTHOME=/home/act
+
+umask 022
+
+# OS modules 
+apt-get -y install zsh emacs-nox git subversion aptitude libapache2-mod-perl2 apache2 curl make postgresql-plperl-9.4 vim
+
 # Perl modules needed by ACT
 apt-get -y install libdbi-perl  libclone-perl libapache2-authcookie-perl libapache2-request-perl libappconfig-perl libdbd-pg-perl libdata-ical-perl libdatetime-format-pg-perl libdatetime-locale-perl libdatetime-timezone-perl libdatetime-perl libemail-address-perl libperl-dev libmodule-install-perl libemail-date-perl libemail-messageid-perl libemail-simple-creator-perl libemail-simple-perl libemail-valid-perl libflickr-api-perl libhtml-parser-perl libhtml-tagcloud-perl libhttp-message-perl libimager-perl libjson-xs-perl libwww-perl liblocale-maketext-lexicon-perl libnet-openid-server-perl libpod-pom-perl libtemplate-perl libtemplate-multilingual-perl libterm-readkey-perl  libtest-mockobject-perl libtext-diff-perl libtext-wikiformat-perl liburi-perl libwiki-toolkit-perl libxml-atom-perl cpanminus
+
 # Modules debian doesn't provide:
 cpanm Data::ICal::DateTime Data::ICal::TimeZone Email::Send Email::Send::Sendmail List::Pairwise Text::xSV
+
+# Checkout ACT.
 cd /var
 git clone https://github.com/book/Act.git
 
-# Apache2 not Apache?
-- Apache::Request                ...missing.
-# Missing
-- Apache::Constants              ...missing.
-- Apache::Cookie                 ...missing.
+#Setup ACTHOME
+useradd -m act
+mkdir -p /home/act/wwwdocs/photos
+mkdir -p /home/act/conf
+chown -R act: /home/act
+chown www-data:act /home/act/wwwdocs/photos
+
+# Postgres setup
+\su - postgres
+createuser -s act --password '<PASSWORD HERE>'
+createdb act --encoding=UTF8
+createdb acttest --encoding=UTF8
+createdb actwiki --encoding=UTF8
+
+# edit /etc/postgresql/9.4/main/pg_hba.conf and follow directions for pg_hba.conf from:
+# https://github.com/toddr/Act/blob/master/lib/Act/Manual/Developer/Installation.pod
+
+# Become root again
+systemctl restart postgresql
+wiki-toolkit-setupdb --type postgres --name actwiki --user act --pass '<PASSWORD HERE>'
+
+# Setup the ini file in /home/act/conf/act.ini prt Installation.pod
