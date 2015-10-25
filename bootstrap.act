@@ -1,0 +1,14 @@
+# On Jesse Debian
+apt-get -y install zsh emacs-nox git subversion aptitude libapache2-mod-perl2 apache2 curl make postgresql-plperl-9.4
+# Perl modules needed by ACT
+apt-get -y install libdbi-perl  libclone-perl libapache2-authcookie-perl libapache2-request-perl libappconfig-perl libdbd-pg-perl libdata-ical-perl libdatetime-format-pg-perl libdatetime-locale-perl libdatetime-timezone-perl libdatetime-perl libemail-address-perl libperl-dev libmodule-install-perl libemail-date-perl libemail-messageid-perl libemail-simple-creator-perl libemail-simple-perl libemail-valid-perl libflickr-api-perl libhtml-parser-perl libhtml-tagcloud-perl libhttp-message-perl libimager-perl libjson-xs-perl libwww-perl liblocale-maketext-lexicon-perl libnet-openid-server-perl libpod-pom-perl libtemplate-perl libtemplate-multilingual-perl libterm-readkey-perl  libtest-mockobject-perl libtext-diff-perl libtext-wikiformat-perl liburi-perl libwiki-toolkit-perl libxml-atom-perl cpanminus
+# Modules debian doesn't provide:
+cpanm Data::ICal::DateTime Data::ICal::TimeZone Email::Send Email::Send::Sendmail List::Pairwise Text::xSV
+cd /var
+git clone https://github.com/book/Act.git
+
+# Apache2 not Apache?
+- Apache::Request                ...missing.
+# Missing
+- Apache::Constants              ...missing.
+- Apache::Cookie                 ...missing.
