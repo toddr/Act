@@ -1,6 +1,6 @@
 package Act::Handler::WebAPI;
 use strict;
-use Apache2::Const qw(OK BAD_REQUEST);
+use Apache2::Const qw(OK HTTP_BAD_REQUEST);
 use JSON::XS ();
 
 use Act::Config;
@@ -80,7 +80,7 @@ sub handler {
             return;
         }
     }
-    $Request{status} = BAD_REQUEST;
+    $Request{status} = HTTP_BAD_REQUEST;
 }
 
 
