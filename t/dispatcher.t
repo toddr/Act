@@ -5,26 +5,8 @@ use Test::MockObject;
 use Test::More;
 use Act::Config;
 use Act::Util;
+use Apache2::Const qw{:common};
 
-# Apache2::Const doesn't work offline
-BEGIN {
-    my %ac = (
-        OK        => 0,
-        DECLINED  => 403,
-        REDIRECT  => 302,
-    );
-    {
-        require Exporter;
-        $INC{'Apache/Constants'} = 1;
-        @Apache2::Const::ISA = 'Exporter';
-        @Apache2::Const::EXPORT = keys %ac;
-        while (my ($k, $v) = each %ac) {
-            no strict 'refs';
-            *{"Apache2::Const::$k"} = sub { $v };
-        }
-        Apache2::Const->import;
-    }
-}
 my %uris = (
     foo => 'foo',
     bar => 'bar',
@@ -161,7 +143,7 @@ $r->set_always(server      => $s)
   ->mock(header_in     => sub { $vin{headers_in}{$_[1]} })
   ->mock(param         => sub { @_ > 1 ? $vin{args}{$_[1]} : keys %{$vin{args}} });
 
-Test::MockObject->fake_module('Apache::Request', instance => sub { $r });
+Test::MockObject->fake_module('Apache2::Request', instance => sub { $r });
 
 use_ok('Act::Dispatcher');
 
