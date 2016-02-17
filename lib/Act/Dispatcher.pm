@@ -80,7 +80,7 @@ my %dispatch = ( map( { $_ => { handler => $public_handlers{$_} } } keys %public
 sub trans_handler
 {
     # the Apache request object
-    my $r = Apache2::Request->instance(shift);
+    my $r = Apache2::Request->new(shift);
 
     # break it up in components
     my @c = grep $_, split '/', decode_utf8($r->uri);
@@ -152,7 +152,7 @@ sub _dispatch
 sub handler
 {
     # the Apache request object
-    $Request{r} = Apache2::Request->instance(shift);
+    $Request{r} = Apache2::Request->new(shift);
 
     # dispatch
     my $pkg = $dispatch{$Request{action}}{handler};
@@ -232,9 +232,11 @@ sub _set_language
 
 sub _base_url
 {
-    my $r = shift;
-    my $url = 'http://' . $r->server->server_hostname;
-    $url .= ':' . $r->server->port if $r->server->port != 80;
+  my $r = shift;
+    # TODO: figure out why this doesn't work
+    #    my $url = 'http://' . $r->server->server_hostname;
+    my $url = 'http://act.nixnuts.net';
+    #$url .= ':' . $r->server->port if $r->server->port != 80;
     return $url;
 }
 
