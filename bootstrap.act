@@ -39,3 +39,10 @@ systemctl restart postgresql
 wiki-toolkit-setupdb --type postgres --name actwiki --user act --pass '<PASSWORD HERE>'
 
 # Setup the ini file in /home/act/conf/act.ini prt Installation.pod
+
+# Configure apache
+add these lines to /etc/apache2/envvars
+
+export ACTHOME=/home/act
+export PERL5LIB=/home/act/lib
+
